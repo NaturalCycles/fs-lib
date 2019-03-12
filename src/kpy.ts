@@ -6,15 +6,15 @@ import * as yargs from 'yargs'
 
 export interface KpyOptions {
   baseDir: string
-  inputPatterns: string[]
+  inputPatterns?: string[]
   outputDir: string
-  progress?: boolean
-  dontOverwrite?: boolean
+  silent?: boolean
+  noOverwrite?: boolean
 }
 
 export async function kpyCLI (): Promise<void> {
-  const { _: args, progress, overwrite } = yargs.demandCommand(2).options({
-    progress: {
+  const { _: args, silent, overwrite } = yargs.demandCommand(2).options({
+    silent: {
       type: 'boolean',
     },
     overwrite: {
@@ -32,7 +32,7 @@ export async function kpyCLI (): Promise<void> {
     baseDir,
     inputPatterns,
     outputDir,
-    progress,
+    silent,
     overwrite,
   })*/
 
@@ -40,15 +40,16 @@ export async function kpyCLI (): Promise<void> {
     baseDir,
     inputPatterns,
     outputDir,
-    progress,
-    dontOverwrite: !overwrite,
+    silent,
+    noOverwrite: !overwrite,
   })
 }
 
 export async function kpy (opt: KpyOptions): Promise<void> {
-  let { baseDir, inputPatterns, outputDir, progress, dontOverwrite } = opt
+  let { baseDir, inputPatterns, outputDir, silent, noOverwrite } = opt
 
   // Default pattern
+  inputPatterns = inputPatterns || []
   if (!inputPatterns.length) inputPatterns = ['**']
 
   const filenames = await globby(inputPatterns, {
@@ -56,6 +57,15 @@ export async function kpy (opt: KpyOptions): Promise<void> {
   })
 
   // console.log({filenames})
+  if (!silent) {
+    console.log(
+      c.grey(
+        `Will copy ${filenames.length} files from ${baseDir} to ${outputDir} (${inputPatterns.join(
+          ' ',
+        )})`,
+      ),
+    )
+  }
 
   await Promise.all(
     filenames.map(async filename => {
@@ -63,17 +73,17 @@ export async function kpy (opt: KpyOptions): Promise<void> {
       const destFilename = path.resolve(outputDir, filename)
 
       await cpFile(srcFilename, destFilename, {
-        overwrite: !dontOverwrite,
+        overwrite: !noOverwrite,
       })
 
-      if (progress) {
-        console.log(c.grey(`${filename}`))
+      if (!silent) {
+        console.log(c.grey(`  ${filename}`))
       }
       // console.log({srcFilename, destFilename})
     }),
   )
 
-  if (progress) {
-    console.log(c.grey(`copied ${c.grey.bold('' + filenames.length)} files to ${outputDir}`))
+  if (!silent) {
+    console.log(c.grey(`Copied ${c.grey.bold('' + filenames.length)} files to ${outputDir}`))
   }
 }

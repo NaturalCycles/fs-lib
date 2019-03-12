@@ -12,7 +12,7 @@
 - Provides both CLI and API (so you don't need 2 separate packages)
 - Provides Typescript typings (so you don't need 3 separate packages)
 - Relies on proven lower-level libs (globby, cp-file, yargs)
-- Can report progress of files copied (with `--progress` flag)
+- Report progress to STDOUT by default (unless `--silent` is used)
 
 Just run `kpy help` to see CLI options.
 
@@ -30,7 +30,7 @@ Example, copy all `*.txt` file from `test`, except `one.txt` to `out`:
 
 Options:
 
-- `--progress` - print progress on every file
+- `--silent` - don't output any progress
 - `--no-overwrite` - don't overwrite
 - `help` - show available options
 
