@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/kirillgroshkov/kpy/compare/v1.1.0...v1.2.0) (2019-03-12)
+
+
+### Features
+
+* allow undefined inputPatterns, nicer progress msg ([2e40593](https://github.com/kirillgroshkov/kpy/commit/2e40593))
+
 # [1.1.0](https://github.com/kirillgroshkov/kpy/compare/v1.0.0...v1.1.0) (2019-03-12)
 
 
