@@ -10,16 +10,20 @@ export interface KpyOptions {
   outputDir: string
   silent?: boolean
   noOverwrite?: boolean
+  dotfiles?: boolean
 }
 
 export async function kpyCLI (): Promise<void> {
-  const { _: args, silent, overwrite } = yargs.demandCommand(2).options({
+  const { _: args, silent, overwrite, dotfiles } = yargs.demandCommand(2).options({
     silent: {
       type: 'boolean',
     },
     overwrite: {
       type: 'boolean',
       default: true,
+    },
+    dotfiles: {
+      type: 'boolean',
     },
   }).argv
 
@@ -42,11 +46,12 @@ export async function kpyCLI (): Promise<void> {
     outputDir,
     silent,
     noOverwrite: !overwrite,
+    dotfiles,
   })
 }
 
 export async function kpy (opt: KpyOptions): Promise<void> {
-  let { baseDir, inputPatterns, outputDir, silent, noOverwrite } = opt
+  let { baseDir, inputPatterns, outputDir, silent, noOverwrite, dotfiles } = opt
 
   // Default pattern
   inputPatterns = inputPatterns || []
@@ -54,6 +59,7 @@ export async function kpy (opt: KpyOptions): Promise<void> {
 
   const filenames = await globby(inputPatterns, {
     cwd: baseDir,
+    dot: dotfiles,
   })
 
   // console.log({filenames})

@@ -31,6 +31,7 @@ Example, copy all `*.txt` file from `test`, except `one.txt` to `out`:
 Options:
 
 - `--silent` - don't output any progress
+- `--dotfiles` - include files starting with `.`
 - `--no-overwrite` - don't overwrite
 - `help` - show available options
 
