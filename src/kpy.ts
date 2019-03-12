@@ -4,15 +4,12 @@ import globby from 'globby'
 import * as path from 'path'
 import * as yargs from 'yargs'
 
-interface KpyOptions {
+export interface KpyOptions {
   baseDir: string
   inputPatterns: string[]
   outputDir: string
   progress?: boolean
-  /**
-   * @default true
-   */
-  overwrite?: boolean
+  dontOverwrite?: boolean
 }
 
 export async function kpyCLI (): Promise<void> {
@@ -44,12 +41,12 @@ export async function kpyCLI (): Promise<void> {
     inputPatterns,
     outputDir,
     progress,
-    overwrite,
+    dontOverwrite: !overwrite,
   })
 }
 
 export async function kpy (opt: KpyOptions): Promise<void> {
-  let { baseDir, inputPatterns, outputDir, progress, overwrite } = opt
+  let { baseDir, inputPatterns, outputDir, progress, dontOverwrite } = opt
 
   // Default pattern
   if (!inputPatterns.length) inputPatterns = ['**']
@@ -66,7 +63,7 @@ export async function kpy (opt: KpyOptions): Promise<void> {
       const destFilename = path.resolve(outputDir, filename)
 
       await cpFile(srcFilename, destFilename, {
-        overwrite,
+        overwrite: !dontOverwrite,
       })
 
       if (progress) {
