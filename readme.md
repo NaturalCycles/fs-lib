@@ -33,6 +33,8 @@ Options:
 - `--silent` - don't output any progress
 - `--dotfiles` - include files starting with `.`
 - `--no-overwrite` - don't overwrite
+- `--flat` - flatten the output folders
+- `--dry` - don't copy (useful for debugging)
 - `help` - show available options
 
 # Why

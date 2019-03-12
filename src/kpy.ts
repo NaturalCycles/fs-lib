@@ -11,10 +11,12 @@ export interface KpyOptions {
   silent?: boolean
   noOverwrite?: boolean
   dotfiles?: boolean
+  flat?: boolean
+  dry?: boolean
 }
 
 export async function kpyCLI (): Promise<void> {
-  const { _: args, silent, overwrite, dotfiles } = yargs.demandCommand(2).options({
+  const { _: args, silent, overwrite, dotfiles, flat, dry } = yargs.demandCommand(2).options({
     silent: {
       type: 'boolean',
     },
@@ -23,6 +25,12 @@ export async function kpyCLI (): Promise<void> {
       default: true,
     },
     dotfiles: {
+      type: 'boolean',
+    },
+    flat: {
+      type: 'boolean',
+    },
+    dry: {
       type: 'boolean',
     },
   }).argv
@@ -47,11 +55,13 @@ export async function kpyCLI (): Promise<void> {
     silent,
     noOverwrite: !overwrite,
     dotfiles,
+    flat,
+    dry,
   })
 }
 
 export async function kpy (opt: KpyOptions): Promise<void> {
-  let { baseDir, inputPatterns, outputDir, silent, noOverwrite, dotfiles } = opt
+  let { baseDir, inputPatterns, outputDir, silent, noOverwrite, dotfiles, flat, dry } = opt
 
   // Default pattern
   inputPatterns = inputPatterns || []
@@ -75,21 +85,25 @@ export async function kpy (opt: KpyOptions): Promise<void> {
 
   await Promise.all(
     filenames.map(async filename => {
+      const basename = path.basename(filename)
       const srcFilename = path.resolve(baseDir, filename)
-      const destFilename = path.resolve(outputDir, filename)
+      const destFilename = path.resolve(outputDir, flat ? basename : filename)
 
-      await cpFile(srcFilename, destFilename, {
-        overwrite: !noOverwrite,
-      })
+      if (!dry) {
+        await cpFile(srcFilename, destFilename, {
+          overwrite: !noOverwrite,
+        })
+      }
 
       if (!silent) {
         console.log(c.grey(`  ${filename}`))
       }
-      // console.log({srcFilename, destFilename})
+
+      // console.log({filename, basename, srcFilename, destFilename})
     }),
   )
 
-  if (!silent) {
+  if (!silent && filenames.length) {
     console.log(c.grey(`Copied ${c.grey.bold('' + filenames.length)} files to ${outputDir}`))
   }
 }
