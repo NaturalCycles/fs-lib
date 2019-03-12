@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/kirillgroshkov/kpy/compare/v1.2.0...v1.3.0) (2019-03-12)
+
+
+### Features
+
+* --dotfiles support ([94be124](https://github.com/kirillgroshkov/kpy/commit/94be124))
+
 # [1.2.0](https://github.com/kirillgroshkov/kpy/compare/v1.1.0...v1.2.0) (2019-03-12)
 
 
