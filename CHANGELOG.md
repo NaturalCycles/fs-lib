@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/kirillgroshkov/kpy/compare/v1.4.0...v1.5.0) (2019-03-13)
+
+
+### Features
+
+* default baseDir and outputDir to cwd ([6dfc47c](https://github.com/kirillgroshkov/kpy/commit/6dfc47c))
+
 # [1.4.0](https://github.com/kirillgroshkov/kpy/compare/v1.3.0...v1.4.0) (2019-03-12)
 
 
