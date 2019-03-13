@@ -67,6 +67,9 @@ export async function kpy (opt: KpyOptions): Promise<void> {
   inputPatterns = inputPatterns || []
   if (!inputPatterns.length) inputPatterns = ['**']
 
+  baseDir = baseDir || '.' // default to cwd
+  outputDir = outputDir || '.' // default to cwd
+
   const filenames = await globby(inputPatterns, {
     cwd: baseDir,
     dot: dotfiles,
