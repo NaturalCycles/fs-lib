@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kirillgroshkov/kpy"
+    "url": "https://github.com/NaturalCycles/kpy"
   },
   "author": "Kirill Groshkov",
   "license": "MIT"
