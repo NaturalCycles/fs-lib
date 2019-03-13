@@ -9,6 +9,7 @@ export interface KpyOptions {
   inputPatterns?: string[]
   outputDir: string
   silent?: boolean
+  verbose?: boolean
   noOverwrite?: boolean
   dotfiles?: boolean
   flat?: boolean
@@ -16,24 +17,31 @@ export interface KpyOptions {
 }
 
 export async function kpyCLI (): Promise<void> {
-  const { _: args, silent, overwrite, dotfiles, flat, dry } = yargs.demandCommand(2).options({
-    silent: {
-      type: 'boolean',
-    },
-    overwrite: {
-      type: 'boolean',
-      default: true,
-    },
-    dotfiles: {
-      type: 'boolean',
-    },
-    flat: {
-      type: 'boolean',
-    },
-    dry: {
-      type: 'boolean',
-    },
-  }).argv
+  const { _: args, silent, verbose, overwrite, dotfiles, flat, dry } = yargs
+    .demandCommand(2)
+    .options({
+      silent: {
+        type: 'boolean',
+        descr: 'Suppress all text output',
+      },
+      verbose: {
+        type: 'boolean',
+        descr: 'Report progress on every file',
+      },
+      overwrite: {
+        type: 'boolean',
+        default: true,
+      },
+      dotfiles: {
+        type: 'boolean',
+      },
+      flat: {
+        type: 'boolean',
+      },
+      dry: {
+        type: 'boolean',
+      },
+    }).argv
 
   const [baseDir, ...inputPatterns] = args
   const outputDir = inputPatterns.pop()!
@@ -53,6 +61,7 @@ export async function kpyCLI (): Promise<void> {
     inputPatterns,
     outputDir,
     silent,
+    verbose,
     noOverwrite: !overwrite,
     dotfiles,
     flat,
@@ -61,7 +70,7 @@ export async function kpyCLI (): Promise<void> {
 }
 
 export async function kpy (opt: KpyOptions): Promise<void> {
-  let { baseDir, inputPatterns, outputDir, silent, noOverwrite, dotfiles, flat, dry } = opt
+  let { baseDir, inputPatterns, outputDir, silent, verbose, noOverwrite, dotfiles, flat, dry } = opt
 
   // Default pattern
   inputPatterns = inputPatterns || []
@@ -98,7 +107,7 @@ export async function kpy (opt: KpyOptions): Promise<void> {
         })
       }
 
-      if (!silent) {
+      if (verbose) {
         console.log(c.grey(`  ${filename}`))
       }
 

@@ -30,7 +30,8 @@ Example, copy all `*.txt` file from `test`, except `one.txt` to `out`:
 
 Options:
 
-- `--silent` - don't output any progress
+- `--silent` - don't output anything
+- `--verbose` - report progress on every file
 - `--dotfiles` - include files starting with `.`
 - `--no-overwrite` - don't overwrite
 - `--flat` - flatten the output folders
