@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/kirillgroshkov/kpy/compare/v1.5.0...v1.6.0) (2019-03-13)
+
+
+### Features
+
+* --verbose ([fe2c074](https://github.com/kirillgroshkov/kpy/commit/fe2c074))
+
 # [1.5.0](https://github.com/kirillgroshkov/kpy/compare/v1.4.0...v1.5.0) (2019-03-13)
 
 
