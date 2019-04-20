@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/NaturalCycles/kpy/compare/v1.6.0...v1.7.0) (2019-04-20)
+
+
+### Features
+
+* --move option ([1c25e83](https://github.com/NaturalCycles/kpy/commit/1c25e83))
+
 # [1.6.0](https://github.com/kirillgroshkov/kpy/compare/v1.5.0...v1.6.0) (2019-03-13)
 
 
