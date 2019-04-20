@@ -1,6 +1,8 @@
-// Excludes tests
 {
   "extends": "./tsconfig.json",
-  "include": ["src"],
-  "exclude": ["src/test", "src/**/*.test.*"]
+  "compilerOptions": {
+    "declaration": true,
+    "sourceMap": true
+  },
+  "exclude": ["**/_exclude", "**/@linked", "src/test", "src/**/*.test.*"]
 }

@@ -36,13 +36,15 @@ Options:
 - `--no-overwrite` - don't overwrite
 - `--flat` - flatten the output folders
 - `--dry` - don't copy (useful for debugging)
+- `--move` - move files instead of copy
 - `help` - show available options
 
 # Why
 
 `cpy` has issue with `--cwd`, `--parents`. `--parents` should be default, and `cwd` is confusing.
 
-`cpx` is amazing, but doesn't support multiple globs and therefore negation globs (e.g `test/* !test/one.txt`)
+`cpx` is amazing, but doesn't support multiple globs and therefore negation globs (e.g
+`test/* !test/one.txt`)
 
 ## Example 1
 
@@ -64,7 +66,8 @@ Works really well here!
 
 ## Example 2
 
-Copy all files/dirs while keeping directory structure from `test/*.txt` to `out`, excluding `one.txt`.
+Copy all files/dirs while keeping directory structure from `test/*.txt` to `out`, excluding
+`one.txt`.
 
 Simple, right?
 
