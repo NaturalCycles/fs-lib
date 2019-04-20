@@ -1,6 +1,7 @@
 import * as c from 'ansi-colors'
-import cpFile from 'cp-file'
+import * as cpFile from 'cp-file'
 import globby from 'globby'
+import * as moveFile from 'move-file'
 import * as path from 'path'
 import * as yargs from 'yargs'
 
@@ -14,10 +15,11 @@ export interface KpyOptions {
   dotfiles?: boolean
   flat?: boolean
   dry?: boolean
+  move?: boolean
 }
 
 export async function kpyCLI (): Promise<void> {
-  const { _: args, silent, verbose, overwrite, dotfiles, flat, dry } = yargs
+  const { _: args, silent, verbose, overwrite, dotfiles, flat, dry, move } = yargs
     .demandCommand(2)
     .options({
       silent: {
@@ -40,6 +42,10 @@ export async function kpyCLI (): Promise<void> {
       },
       dry: {
         type: 'boolean',
+      },
+      move: {
+        type: 'boolean',
+        descr: 'Move files instead of copy',
       },
     }).argv
 
@@ -66,11 +72,23 @@ export async function kpyCLI (): Promise<void> {
     dotfiles,
     flat,
     dry,
+    move,
   })
 }
 
 export async function kpy (opt: KpyOptions): Promise<void> {
-  let { baseDir, inputPatterns, outputDir, silent, verbose, noOverwrite, dotfiles, flat, dry } = opt
+  let {
+    baseDir,
+    inputPatterns,
+    outputDir,
+    silent,
+    verbose,
+    noOverwrite,
+    dotfiles,
+    flat,
+    dry,
+    move,
+  } = opt
 
   // Default pattern
   inputPatterns = inputPatterns || []
@@ -88,9 +106,9 @@ export async function kpy (opt: KpyOptions): Promise<void> {
   if (!silent) {
     console.log(
       c.grey(
-        `Will copy ${filenames.length} files from ${baseDir} to ${outputDir} (${inputPatterns.join(
-          ' ',
-        )})`,
+        `Will ${move ? 'move' : 'copy'} ${
+          filenames.length
+        } files from ${baseDir} to ${outputDir} (${inputPatterns.join(' ')})`,
       ),
     )
   }
@@ -102,9 +120,15 @@ export async function kpy (opt: KpyOptions): Promise<void> {
       const destFilename = path.resolve(outputDir, flat ? basename : filename)
 
       if (!dry) {
-        await cpFile(srcFilename, destFilename, {
-          overwrite: !noOverwrite,
-        })
+        if (move) {
+          await moveFile(srcFilename, destFilename, {
+            overwrite: !noOverwrite,
+          })
+        } else {
+          await cpFile(srcFilename, destFilename, {
+            overwrite: !noOverwrite,
+          })
+        }
       }
 
       if (verbose) {
@@ -116,6 +140,10 @@ export async function kpy (opt: KpyOptions): Promise<void> {
   )
 
   if (!silent && filenames.length) {
-    console.log(c.grey(`Copied ${c.grey.bold('' + filenames.length)} files to ${outputDir}`))
+    console.log(
+      c.grey(
+        `${move ? 'Moved' : 'Copied'} ${c.grey.bold('' + filenames.length)} files to ${outputDir}`,
+      ),
+    )
   }
 }
