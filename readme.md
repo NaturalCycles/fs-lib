@@ -18,15 +18,19 @@ Just run `kpy help` to see CLI options.
 
 # CLI API
 
-    kpy <baseDir> <pattern1> <pattern2> ... <outputDir>
+```sh
 
-Example, copy all from `test` to `out`:
+kpy <baseDir> <pattern1> <pattern2> ... <outputDir>
 
-    kpy test out
+# Example, copy all from `test` to `out`:
 
-Example, copy all `*.txt` file from `test`, except `one.txt` to `out`:
+kpy test out
 
-    kpy test **/*.txt !**/one.txt out
+# Example, copy all `*.txt` file from `test`, except `one.txt` to `out`:
+
+kpy test '**/*.txt' '!**/one.txt' out
+
+```
 
 Options:
 
@@ -80,3 +84,26 @@ Possible, but not trivial to figure out `..out`, `--cwd`, etc.
 #### cpx
 
 Not possible to exclude :(
+
+# del
+
+This package also provides `del` cli (api similar and inspired by
+[del](https://github.com/sindresorhus/del).
+
+Examples:
+
+```sh
+
+# Delete everything under `dist`:
+del dist
+
+# Delete all .json files under `dist` (important to quote globs!):
+del 'dist/**/*.json'
+
+# Delete all, but .json files under `dist`:
+del dist '!**/*.json'
+
+# Delete folders `a`, `b` and `c`:
+del a b c
+
+```

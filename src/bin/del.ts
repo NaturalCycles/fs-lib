@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import { kpyCommand } from '../kpy'
+import { delCommand } from '../del'
 
-kpyCommand().catch(err => {
+delCommand().catch(err => {
   console.error(err)
   process.exit(1)
 })

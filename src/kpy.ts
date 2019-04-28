@@ -18,7 +18,7 @@ export interface KpyOptions {
   move?: boolean
 }
 
-export async function kpyCLI (): Promise<void> {
+export async function kpyCommand (): Promise<void> {
   const { _: args, silent, verbose, overwrite, dotfiles, flat, dry, move } = yargs
     .demandCommand(2)
     .options({
