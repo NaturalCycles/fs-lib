@@ -1,6 +1,6 @@
 {
   "name": "kpy",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "CLI and Node.js API to copy files with globs, promises, typescript and stuff.",
   "scripts": {
     "kpy": "tsn ./src/bin/kpy.ts",

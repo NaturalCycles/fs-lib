@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/NaturalCycles/kpy/compare/v1.8.0...v1.8.1) (2019-04-28)
+
+
+### Bug Fixes
+
+* del command api to be compatible with `del` ([3cb55b4](https://github.com/NaturalCycles/kpy/commit/3cb55b4))
+
 # [1.8.0](https://github.com/NaturalCycles/kpy/compare/v1.7.0...v1.8.0) (2019-04-28)
 
 
