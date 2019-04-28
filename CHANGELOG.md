@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/NaturalCycles/kpy/compare/v1.7.0...v1.8.0) (2019-04-28)
+
+
+### Features
+
+* `del` command ([a07c68d](https://github.com/NaturalCycles/kpy/commit/a07c68d))
+
 # [1.7.0](https://github.com/NaturalCycles/kpy/compare/v1.6.0...v1.7.0) (2019-04-20)
 
 
