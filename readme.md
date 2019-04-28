@@ -101,7 +101,7 @@ del dist
 del 'dist/**/*.json'
 
 # Delete all, but .json files under `dist`:
-del dist '!**/*.json'
+del 'dist/**' '!dist' '!**/*.json'
 
 # Delete folders `a`, `b` and `c`:
 del a b c

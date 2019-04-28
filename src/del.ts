@@ -69,6 +69,7 @@ export async function del (_opt: DelOptions): Promise<void> {
 
   const filenames = await globby(patterns, {
     dot: true,
+    expandDirectories: false,
     onlyFiles: false,
   })
 
@@ -85,3 +86,8 @@ export async function del (_opt: DelOptions): Promise<void> {
 
   if (!silent) console.log(`del deleted ${filenames.length} files in ${Date.now() - d} ms`)
 }
+
+// How to improve API:
+// glob only files, expand dirs, delete
+// glob only dirs, expand, delete only empty!
+// test each original pattern, if it exists and is directory and is empty - delete
