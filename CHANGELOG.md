@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/NaturalCycles/kpy/compare/v1.8.1...v1.9.0) (2019-04-29)
+
+
+### Features
+
+* **del:** improved globbing algorithm ([51d926a](https://github.com/NaturalCycles/kpy/commit/51d926a))
+
 ## [1.8.1](https://github.com/NaturalCycles/kpy/compare/v1.8.0...v1.8.1) (2019-04-28)
 
 
