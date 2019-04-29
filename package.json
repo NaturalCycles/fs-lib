@@ -12,9 +12,9 @@
     "@naturalcycles/promise-lib": "^2.1.2",
     "ansi-colors": "^3.2.4",
     "cp-file": "^7.0.0",
+    "fs-extra": "^7.0.1",
     "globby": "^9.1.0",
     "move-file": "^1.2.0",
-    "rimraf": "^2.6.3",
     "yargs": "^13.2.2"
   },
   "devDependencies": {

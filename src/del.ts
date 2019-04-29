@@ -1,8 +1,7 @@
-import { pMap } from '@naturalcycles/promise-lib'
+import { pFilter, pMap } from '@naturalcycles/promise-lib'
+import * as fs from 'fs-extra'
 import globby from 'globby'
-import { promisify } from 'util'
 import * as yargs from 'yargs'
-const rimraf = promisify(require('rimraf'))
 
 export interface DelOptions {
   /**
@@ -67,27 +66,66 @@ export async function del (_opt: DelOptions): Promise<void> {
     console.log(opt)
   }
 
+  // 1. glob only files, expand dirs, delete
+
   const filenames = await globby(patterns, {
     dot: true,
-    expandDirectories: false,
-    onlyFiles: false,
+    expandDirectories: true,
+    onlyFiles: true,
   })
 
-  if (verbose || dry) console.log(`Will delete ${filenames.length} files:`, filenames)
+  if (verbose || debug || dry) console.log(`Will delete ${filenames.length} files:`, filenames)
+
   if (dry) return
 
-  await pMap(
-    filenames,
-    async filepath => {
-      await rimraf(filepath, { glob: false })
-    },
-    { concurrency },
+  await pMap(filenames, filepath => fs.remove(filepath), { concurrency })
+
+  // 2. glob only dirs, expand, delete only empty!
+  let dirnames = await globby(patterns, {
+    dot: true,
+    expandDirectories: true,
+    onlyDirectories: true,
+  })
+
+  // Add original patterns (if any of them are dirs)
+  dirnames = dirnames.concat(
+    await pFilter(patterns, async pattern => {
+      return (await fs.pathExists(pattern)) && (await fs.lstat(pattern)).isDirectory()
+    }),
   )
 
-  if (!silent) console.log(`del deleted ${filenames.length} files in ${Date.now() - d} ms`)
+  const dirnamesSorted = dirnames.sort().reverse()
+
+  // console.log({ dirnamesSorted })
+
+  const deletedDirs = await pFilter(
+    dirnamesSorted,
+    async dirpath => {
+      if (await isEmptyDir(dirpath)) {
+        // console.log(`empty dir: ${dirpath}`)
+        await fs.remove(dirpath)
+        return true
+      }
+      return false
+    },
+    { concurrency: 1 },
+  )
+
+  if (verbose || debug) console.log({ deletedDirs })
+
+  if (!silent) {
+    console.log(
+      `del deleted ${filenames.length} files and ${deletedDirs.length} dirs in ${Date.now() -
+        d} ms`,
+    )
+  }
 }
 
-// How to improve API:
-// glob only files, expand dirs, delete
-// glob only dirs, expand, delete only empty!
-// test each original pattern, if it exists and is directory and is empty - delete
+// Improved algorithm:
+// 1. glob only files, expand dirs, delete
+// 2. glob only dirs, expand, delete only empty!
+// 3. test each original pattern, if it exists and is directory and is empty - delete
+
+async function isEmptyDir (dir: string): Promise<boolean> {
+  return (await fs.readdir(dir)).length === 0
+}

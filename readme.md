@@ -94,14 +94,17 @@ Examples:
 
 ```sh
 
-# Delete everything under `dist`:
+# Delete everything under `dist`, including `dist`:
 del dist
 
-# Delete all .json files under `dist` (important to quote globs!):
+# Delete everything under `dist`, NOT including `dist` (important to quote globs!):
+del 'dist/**'
+
+# Delete all .json files under `dist`:
 del 'dist/**/*.json'
 
 # Delete all, but .json files under `dist`:
-del 'dist/**' '!dist' '!**/*.json'
+del dist '!**/*.json'
 
 # Delete folders `a`, `b` and `c`:
 del a b c

@@ -447,9 +447,9 @@
     "@types/luxon" "^1.4.0"
 
 "@naturalcycles/promise-lib@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@naturalcycles/promise-lib/-/promise-lib-2.1.2.tgz#458f7a9e6633624ee9247fe4e45164b3660fa5aa"
-  integrity sha512-CLAXr45qaD0DVFJhxShy0i6hHrEVmchb1M0qmW1qMd35CMMKwfifmi74774v2tbqwLrHr8+qIm+chv79UPr4nQ==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@naturalcycles/promise-lib/-/promise-lib-2.2.0.tgz#d3e696f6d04fdf86eaf9f7819a74f886fdbd89f1"
+  integrity sha512-aolpV4cCGFlow6Po8LGo3kgFC6fp0hBZpAIeCWcqxgz505R6eSe8JX08EmZM6tI3IKGX5yKpSOIAO4qo1XFSLA==
 
 "@naturalcycles/semantic-release@^1.0.0":
   version "1.0.0"
@@ -2557,7 +2557,7 @@ from2@^2.1.0, from2@^2.1.1:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
-fs-extra@^7.0.0:
+fs-extra@^7.0.0, fs-extra@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
