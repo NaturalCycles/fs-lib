@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/NaturalCycles/kpy/compare/v1.9.0...v2.0.0) (2019-05-02)
+
+
+### Code Refactoring
+
+* rename from kpy to @naturalcycles/fs-lib ([78872a8](https://github.com/NaturalCycles/kpy/commit/78872a8))
+
+
+### BREAKING CHANGES
+
+* ^^^
+
 # [1.9.0](https://github.com/NaturalCycles/kpy/compare/v1.8.1...v1.9.0) (2019-04-29)
 
 
