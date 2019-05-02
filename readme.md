@@ -1,9 +1,9 @@
-## kpy
+## @naturalcycles/fs-lib
 
 > CLI and Node.js API to copy files with globs, promises, typescript and stuff.
 
-[![npm](https://img.shields.io/npm/v/kpy/latest.svg)](https://www.npmjs.com/package/kpy)
-[![](https://circleci.com/gh/kirillgroshkov/kpy.svg?style=shield&circle-token=cbb20b471eb9c1d5ed975e28c2a79a45671d78ea)](https://circleci.com/gh/kirillgroshkov/kpy)
+[![npm](https://img.shields.io/npm/v/@naturalcycles/fs-lib/latest.svg)](https://www.npmjs.com/package/@naturalcycles/fs-lib)
+[![](https://circleci.com/gh/NaturalCycles/fs-lib.svg?style=shield&circle-token=cbb20b471eb9c1d5ed975e28c2a79a45671d78ea)](https://circleci.com/gh/NaturalCycles/fs-lib)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 # Features
@@ -15,6 +15,11 @@
 - Report progress to STDOUT by default (unless `--silent` is used)
 
 Just run `kpy help` to see CLI options.
+
+# API commands
+
+- `kpy` - copy/move files/folders
+- `del` - delete files/folders
 
 # CLI API
 

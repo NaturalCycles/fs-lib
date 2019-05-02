@@ -1,5 +1,5 @@
 {
-  "name": "kpy",
+  "name": "@naturalcycles/fs-lib",
   "version": "1.9.0",
   "description": "CLI and Node.js API to copy files with globs, promises, typescript and stuff.",
   "scripts": {
@@ -18,8 +18,8 @@
     "yargs": "^13.2.2"
   },
   "devDependencies": {
+    "@naturalcycles/dev-lib": "^6.0.0",
     "@naturalcycles/semantic-release": "^1.0.0",
-    "@naturalcycles/shared-module": "^5.12.0",
     "@types/jest": "^24.0.6",
     "@types/node": "^11.0.0",
     "jest": "^24.1.0",
