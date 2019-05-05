@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/NaturalCycles/kpy/compare/v2.0.0...v2.1.0) (2019-05-05)
+
+
+### Features
+
+* exit gracefully if baseDir doesn't exist ([695c33e](https://github.com/NaturalCycles/kpy/commit/695c33e))
+
 # [2.0.0](https://github.com/NaturalCycles/kpy/compare/v1.9.0...v2.0.0) (2019-05-02)
 
 
