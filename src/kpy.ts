@@ -78,6 +78,8 @@ export async function kpyCommand (): Promise<void> {
 }
 
 export async function kpy (opt: KpyOptions): Promise<void> {
+  const d = Date.now()
+
   let {
     baseDir,
     inputPatterns,
@@ -97,6 +99,8 @@ export async function kpy (opt: KpyOptions): Promise<void> {
 
   baseDir = baseDir || '.' // default to cwd
   outputDir = outputDir || '.' // default to cwd
+
+  await fs.ensureDir(outputDir)
 
   if (!fs.existsSync(baseDir)) {
     console.log(`kpy: baseDir doesn't exist: ${baseDir}`)
@@ -148,7 +152,9 @@ export async function kpy (opt: KpyOptions): Promise<void> {
   if (!silent && filenames.length) {
     console.log(
       c.grey(
-        `${move ? 'Moved' : 'Copied'} ${c.grey.bold('' + filenames.length)} files to ${outputDir}`,
+        `${move ? 'Moved' : 'Copied'} ${c.grey.bold(
+          '' + filenames.length,
+        )} files to ${outputDir} in ${Date.now() - d} ms`,
       ),
     )
   }
