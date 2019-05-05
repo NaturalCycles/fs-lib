@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/NaturalCycles/kpy/compare/v2.1.0...v2.2.0) (2019-05-05)
+
+
+### Features
+
+* ensure outDir exists ([660091d](https://github.com/NaturalCycles/kpy/commit/660091d))
+
 # [2.1.0](https://github.com/NaturalCycles/kpy/compare/v2.0.0...v2.1.0) (2019-05-05)
 
 
