@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
+import 'loud-rejection/register'
 import { delCommand } from '../del'
 
-delCommand().catch(err => {
-  console.error(err)
-  process.exit(1)
-})
+void delCommand()

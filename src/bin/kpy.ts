@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
+import 'loud-rejection/register'
 import { kpyCommand } from '../kpy'
 
-kpyCommand().catch(err => {
-  console.error(err)
-  process.exit(1)
-})
+void kpyCommand()

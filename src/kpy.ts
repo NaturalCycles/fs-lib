@@ -1,5 +1,6 @@
 import * as c from 'ansi-colors'
 import * as cpFile from 'cp-file'
+import * as fs from 'fs-extra'
 import globby from 'globby'
 import * as moveFile from 'move-file'
 import * as path from 'path'
@@ -96,6 +97,11 @@ export async function kpy (opt: KpyOptions): Promise<void> {
 
   baseDir = baseDir || '.' // default to cwd
   outputDir = outputDir || '.' // default to cwd
+
+  if (!fs.existsSync(baseDir)) {
+    console.log(`kpy: baseDir doesn't exist: ${baseDir}`)
+    return
+  }
 
   const filenames = await globby(inputPatterns, {
     cwd: baseDir,
