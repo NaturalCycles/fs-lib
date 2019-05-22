@@ -59,12 +59,11 @@ export async function del (_opt: DelOptions | DelSingleOption): Promise<void> {
   const d = Date.now()
 
   // Convert DelSingleOption to DelOptions
-  _opt =
-    typeof _opt === 'string'
-      ? {
-          patterns: [_opt],
-        }
-      : _opt
+  if (typeof _opt === 'string') {
+    _opt = {
+      patterns: [_opt],
+    }
+  }
 
   const opt = {
     ...DEF_OPT,
