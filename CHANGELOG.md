@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/NaturalCycles/kpy/compare/v2.2.0...v2.3.0) (2019-05-22)
+
+
+### Features
+
+* support del('one pattern') usage ([f799905](https://github.com/NaturalCycles/kpy/commit/f799905))
+
 # [2.2.0](https://github.com/NaturalCycles/kpy/compare/v2.1.0...v2.2.0) (2019-05-05)
 
 
