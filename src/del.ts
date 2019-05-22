@@ -23,6 +23,8 @@ export interface DelOptions {
   dry?: boolean
 }
 
+export type DelSingleOption = string
+
 const DEF_OPT: DelOptions = {
   patterns: [],
   concurrency: Number.POSITIVE_INFINITY,
@@ -53,8 +55,17 @@ export async function delCommand (): Promise<void> {
 /**
  * Delete files that match input patterns.
  */
-export async function del (_opt: DelOptions): Promise<void> {
+export async function del (_opt: DelOptions | DelSingleOption): Promise<void> {
   const d = Date.now()
+
+  // Convert DelSingleOption to DelOptions
+  _opt =
+    typeof _opt === 'string'
+      ? {
+          patterns: [_opt],
+        }
+      : _opt
+
   const opt = {
     ...DEF_OPT,
     ..._opt,
