@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/NaturalCycles/kpy/compare/v2.3.0...v2.4.0) (2019-08-18)
+
+
+### Features
+
+* deps ([80ede8f](https://github.com/NaturalCycles/kpy/commit/80ede8f))
+
 # [2.3.0](https://github.com/NaturalCycles/kpy/compare/v2.2.0...v2.3.0) (2019-05-22)
 
 
