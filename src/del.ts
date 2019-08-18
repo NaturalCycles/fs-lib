@@ -1,6 +1,6 @@
-import { pFilter, pMap } from '@naturalcycles/promise-lib'
+import { pFilter, pMap } from '@naturalcycles/js-lib'
 import * as fs from 'fs-extra'
-import globby from 'globby'
+import * as globby from 'globby'
 import * as yargs from 'yargs'
 
 export interface DelOptions {
