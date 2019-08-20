@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/NaturalCycles/fs-lib/compare/v2.4.0...v2.4.1) (2019-08-20)
+
+
+### Bug Fixes
+
+* deps ([62935e3](https://github.com/NaturalCycles/fs-lib/commit/62935e3))
+
 # [2.4.0](https://github.com/NaturalCycles/kpy/compare/v2.3.0...v2.4.0) (2019-08-18)
 
 
