@@ -16,7 +16,7 @@
     "globby": "^10.0.1",
     "loud-rejection": "^2.1.0",
     "move-file": "^1.2.0",
-    "yargs": "^13.3.0"
+    "yargs": "^14.0.0"
   },
   "devDependencies": {
     "@naturalcycles/dev-lib": "^7.16.2",
@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NaturalCycles/kpy"
+    "url": "https://github.com/NaturalCycles/fs-lib"
   },
   "author": "Kirill Groshkov",
   "license": "MIT"
