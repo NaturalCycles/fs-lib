@@ -1,3 +1,10 @@
+## [2.4.3](https://github.com/NaturalCycles/fs-lib/compare/v2.4.2...v2.4.3) (2019-08-25)
+
+
+### Bug Fixes
+
+* colors ([fff64e4](https://github.com/NaturalCycles/fs-lib/commit/fff64e4))
+
 ## [2.4.2](https://github.com/NaturalCycles/fs-lib/compare/v2.4.1...v2.4.2) (2019-08-25)
 
 
