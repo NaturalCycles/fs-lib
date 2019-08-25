@@ -1,4 +1,6 @@
 import { pFilter, pMap } from '@naturalcycles/js-lib'
+import { since } from '@naturalcycles/time-lib'
+import c from 'chalk'
 import * as fs from 'fs-extra'
 import * as globby from 'globby'
 import * as yargs from 'yargs'
@@ -56,7 +58,7 @@ export async function delCommand (): Promise<void> {
  * Delete files that match input patterns.
  */
 export async function del (_opt: DelOptions | DelSingleOption): Promise<void> {
-  const d = Date.now()
+  const started = Date.now()
 
   // Convert DelSingleOption to DelOptions
   if (typeof _opt === 'string') {
@@ -84,7 +86,9 @@ export async function del (_opt: DelOptions | DelSingleOption): Promise<void> {
     onlyFiles: true,
   })
 
-  if (verbose || debug || dry) console.log(`Will delete ${filenames.length} files:`, filenames)
+  if (verbose || debug || dry) {
+    console.log(`Will delete ${c.bold.white(String(filenames.length))} files:`, filenames)
+  }
 
   if (dry) return
 
@@ -125,8 +129,9 @@ export async function del (_opt: DelOptions | DelSingleOption): Promise<void> {
 
   if (!silent) {
     console.log(
-      `del deleted ${filenames.length} files and ${deletedDirs.length} dirs in ${Date.now() -
-        d} ms`,
+      `del deleted ${c.bold.white(String(filenames.length))} files and ${c.bold.white(
+        String(deletedDirs.length),
+      )} dirs ${c.dim(since(started))}`,
     )
   }
 }

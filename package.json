@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@naturalcycles/js-lib": "^8.4.0",
-    "ansi-colors": "^4.1.1",
+    "@naturalcycles/time-lib": "^1.5.0",
+    "chalk": "^2.4.2",
     "cp-file": "^7.0.0",
     "fs-extra": "^8.1.0",
     "globby": "^10.0.1",

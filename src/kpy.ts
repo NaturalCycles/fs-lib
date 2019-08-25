@@ -1,4 +1,5 @@
-import * as c from 'ansi-colors'
+import { since } from '@naturalcycles/time-lib'
+import c from 'chalk'
 import * as cpFile from 'cp-file'
 import * as fs from 'fs-extra'
 import * as globby from 'globby'
@@ -78,7 +79,7 @@ export async function kpyCommand (): Promise<void> {
 }
 
 export async function kpy (opt: KpyOptions): Promise<void> {
-  const d = Date.now()
+  const started = Date.now()
 
   let {
     baseDir,
@@ -101,7 +102,7 @@ export async function kpy (opt: KpyOptions): Promise<void> {
   outputDir = outputDir || '.' // default to cwd
 
   if (!fs.existsSync(baseDir)) {
-    console.log(`kpy: baseDir doesn't exist: ${baseDir}`)
+    console.log(`kpy: baseDir doesn't exist: ${c.dim(baseDir)}`)
     return
   }
 
@@ -115,11 +116,9 @@ export async function kpy (opt: KpyOptions): Promise<void> {
   // console.log({filenames})
   if (!silent) {
     console.log(
-      c.grey(
-        `Will ${move ? 'move' : 'copy'} ${
-          filenames.length
-        } files from ${baseDir} to ${outputDir} (${inputPatterns.join(' ')})`,
-      ),
+      `Will ${move ? 'move' : 'copy'} ${c.bold.white(String(filenames.length))} files from ${c.dim(
+        baseDir,
+      )} to ${c.dim(outputDir)} (${c.dim(inputPatterns.join(' '))})`,
     )
   }
 
@@ -151,11 +150,9 @@ export async function kpy (opt: KpyOptions): Promise<void> {
 
   if (!silent && filenames.length) {
     console.log(
-      c.grey(
-        `${move ? 'Moved' : 'Copied'} ${c.grey.bold(
-          '' + filenames.length,
-        )} files to ${outputDir} in ${Date.now() - d} ms`,
-      ),
+      `${move ? 'Moved' : 'Copied'} ${c.bold.white(String(filenames.length))} files to ${c.dim(
+        outputDir,
+      )} ${c.dim(since(started))}`,
     )
   }
 }
