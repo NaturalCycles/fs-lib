@@ -87,7 +87,7 @@ export async function del (_opt: DelOptions | DelSingleOption): Promise<void> {
   })
 
   if (verbose || debug || dry) {
-    console.log(`Will delete ${c.bold.white(String(filenames.length))} files:`, filenames)
+    console.log(`Will delete ${c.white(String(filenames.length))} files:`, filenames)
   }
 
   if (dry) return
@@ -129,7 +129,7 @@ export async function del (_opt: DelOptions | DelSingleOption): Promise<void> {
 
   if (!silent) {
     console.log(
-      `del deleted ${c.bold.white(String(filenames.length))} files and ${c.bold.white(
+      `del deleted ${c.white(String(filenames.length))} files and ${c.white(
         String(deletedDirs.length),
       )} dirs ${c.dim(since(started))}`,
     )

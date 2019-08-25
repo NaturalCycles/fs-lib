@@ -116,7 +116,7 @@ export async function kpy (opt: KpyOptions): Promise<void> {
   // console.log({filenames})
   if (!silent) {
     console.log(
-      `Will ${move ? 'move' : 'copy'} ${c.bold.white(String(filenames.length))} files from ${c.dim(
+      `Will ${move ? 'move' : 'copy'} ${c.white(String(filenames.length))} files from ${c.dim(
         baseDir,
       )} to ${c.dim(outputDir)} (${c.dim(inputPatterns.join(' '))})`,
     )
@@ -150,7 +150,7 @@ export async function kpy (opt: KpyOptions): Promise<void> {
 
   if (!silent && filenames.length) {
     console.log(
-      `${move ? 'Moved' : 'Copied'} ${c.bold.white(String(filenames.length))} files to ${c.dim(
+      `${move ? 'Moved' : 'Copied'} ${c.white(String(filenames.length))} files to ${c.dim(
         outputDir,
       )} ${c.dim(since(started))}`,
     )
