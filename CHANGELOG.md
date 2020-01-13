@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/NaturalCycles/fs-lib/compare/v2.4.3...v2.5.0) (2020-01-13)
+
+
+### Features
+
+* deps ([89fd507](https://github.com/NaturalCycles/fs-lib/commit/89fd507336ad3f33ca4ee7a8e0cb0d79e48da250))
+
 ## [2.4.3](https://github.com/NaturalCycles/fs-lib/compare/v2.4.2...v2.4.3) (2019-08-25)
 
 
