@@ -1,6 +1,6 @@
 import { pFilter, pMap } from '@naturalcycles/js-lib'
 import { since } from '@naturalcycles/time-lib'
-import c from 'chalk'
+import * as c from 'chalk'
 import * as fs from 'fs-extra'
 import * as globby from 'globby'
 import * as yargs from 'yargs'
@@ -32,7 +32,7 @@ const DEF_OPT: DelOptions = {
   concurrency: Number.POSITIVE_INFINITY,
 }
 
-export async function delCommand (): Promise<void> {
+export async function delCommand(): Promise<void> {
   const { _: patterns, verbose, silent, debug, dry, concurrency } = yargs.demandCommand(1).options({
     verbose: {
       type: 'boolean',
@@ -57,7 +57,7 @@ export async function delCommand (): Promise<void> {
 /**
  * Delete files that match input patterns.
  */
-export async function del (_opt: DelOptions | DelSingleOption): Promise<void> {
+export async function del(_opt: DelOptions | DelSingleOption): Promise<void> {
   const started = Date.now()
 
   // Convert DelSingleOption to DelOptions
@@ -141,6 +141,6 @@ export async function del (_opt: DelOptions | DelSingleOption): Promise<void> {
 // 2. glob only dirs, expand, delete only empty!
 // 3. test each original pattern, if it exists and is directory and is empty - delete
 
-async function isEmptyDir (dir: string): Promise<boolean> {
+async function isEmptyDir(dir: string): Promise<boolean> {
   return (await fs.readdir(dir)).length === 0
 }

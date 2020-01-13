@@ -1,5 +1,5 @@
 import { since } from '@naturalcycles/time-lib'
-import c from 'chalk'
+import * as c from 'chalk'
 import * as cpFile from 'cp-file'
 import * as fs from 'fs-extra'
 import * as globby from 'globby'
@@ -20,7 +20,7 @@ export interface KpyOptions {
   move?: boolean
 }
 
-export async function kpyCommand (): Promise<void> {
+export async function kpyCommand(): Promise<void> {
   const { _: args, silent, verbose, overwrite, dotfiles, flat, dry, move } = yargs
     .demandCommand(2)
     .options({
@@ -78,7 +78,7 @@ export async function kpyCommand (): Promise<void> {
   })
 }
 
-export async function kpy (opt: KpyOptions): Promise<void> {
+export async function kpy(opt: KpyOptions): Promise<void> {
   const started = Date.now()
 
   let {
