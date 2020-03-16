@@ -1,3 +1,10 @@
+## [2.6.1](https://github.com/NaturalCycles/fs-lib/compare/v2.6.0...v2.6.1) (2020-03-16)
+
+
+### Bug Fixes
+
+* bump js-lib and cp-file ([c0f7e8d](https://github.com/NaturalCycles/fs-lib/commit/c0f7e8dead460f0a9e61c371822ed49896c1c3c2))
+
 # [2.6.0](https://github.com/NaturalCycles/fs-lib/compare/v2.5.0...v2.6.0) (2020-03-01)
 
 
