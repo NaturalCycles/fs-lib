@@ -1,3 +1,10 @@
+## [2.6.2](https://github.com/NaturalCycles/fs-lib/compare/v2.6.1...v2.6.2) (2020-03-19)
+
+
+### Bug Fixes
+
+* deps ([46a085f](https://github.com/NaturalCycles/fs-lib/commit/46a085f39efc5316e18e6a51951f1b339c03ab70))
+
 ## [2.6.1](https://github.com/NaturalCycles/fs-lib/compare/v2.6.0...v2.6.1) (2020-03-16)
 
 
