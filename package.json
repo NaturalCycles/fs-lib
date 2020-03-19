@@ -13,7 +13,7 @@
     "@naturalcycles/time-lib": "^1.5.0",
     "chalk": "^3.0.0",
     "cp-file": "^9.0.0",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.0",
     "globby": "^11.0.0",
     "loud-rejection": "^2.1.0",
     "move-file": "^1.2.0",
