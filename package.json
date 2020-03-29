@@ -22,7 +22,9 @@
   "devDependencies": {
     "@naturalcycles/dev-lib": "^10.3.0",
     "@types/node": "^13.1.6",
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "patch-package": "^6.2.1",
+    "weak-napi": "^1.0.3"
   },
   "files": [
     "dist",
