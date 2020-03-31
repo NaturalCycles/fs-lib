@@ -1,11 +1,10 @@
+import { boldWhite, dimGrey, grey, yellow } from '@naturalcycles/nodejs-lib/dist/colors'
 import { since } from '@naturalcycles/time-lib'
-import * as c from 'chalk'
 import * as cpFile from 'cp-file'
 import * as fs from 'fs-extra'
 import * as globby from 'globby'
 import * as moveFile from 'move-file'
 import * as path from 'path'
-import * as yargs from 'yargs'
 
 export interface KpyOptions {
   baseDir: string
@@ -18,64 +17,6 @@ export interface KpyOptions {
   flat?: boolean
   dry?: boolean
   move?: boolean
-}
-
-export async function kpyCommand(): Promise<void> {
-  const { _: args, silent, verbose, overwrite, dotfiles, flat, dry, move } = yargs
-    .demandCommand(2)
-    .options({
-      silent: {
-        type: 'boolean',
-        descr: 'Suppress all text output',
-      },
-      verbose: {
-        type: 'boolean',
-        descr: 'Report progress on every file',
-      },
-      overwrite: {
-        type: 'boolean',
-        default: true,
-      },
-      dotfiles: {
-        type: 'boolean',
-      },
-      flat: {
-        type: 'boolean',
-      },
-      dry: {
-        type: 'boolean',
-      },
-      move: {
-        type: 'boolean',
-        descr: 'Move files instead of copy',
-      },
-    }).argv
-
-  const [baseDir, ...inputPatterns] = args
-  const outputDir = inputPatterns.pop()!
-
-  /*
-  console.log({
-    argv: process.argv,
-    baseDir,
-    inputPatterns,
-    outputDir,
-    silent,
-    overwrite,
-  })*/
-
-  await kpy({
-    baseDir,
-    inputPatterns,
-    outputDir,
-    silent,
-    verbose,
-    noOverwrite: !overwrite,
-    dotfiles,
-    flat,
-    dry,
-    move,
-  })
 }
 
 export async function kpy(opt: KpyOptions): Promise<void> {
@@ -102,7 +43,7 @@ export async function kpy(opt: KpyOptions): Promise<void> {
   outputDir = outputDir || '.' // default to cwd
 
   if (!fs.existsSync(baseDir)) {
-    console.log(`kpy: baseDir doesn't exist: ${c.dim(baseDir)}`)
+    console.log(`kpy: baseDir doesn't exist: ${boldWhite(baseDir)}`)
     return
   }
 
@@ -116,9 +57,9 @@ export async function kpy(opt: KpyOptions): Promise<void> {
   // console.log({filenames})
   if (!silent) {
     console.log(
-      `Will ${move ? 'move' : 'copy'} ${c.white(String(filenames.length))} files from ${c.dim(
+      `Will ${move ? 'move' : 'copy'} ${yellow(filenames.length)} files from ${dimGrey(
         baseDir,
-      )} to ${c.dim(outputDir)} (${c.dim(inputPatterns.join(' '))})`,
+      )} to ${dimGrey(outputDir)} (${dimGrey(inputPatterns.join(' '))})`,
     )
   }
 
@@ -141,7 +82,7 @@ export async function kpy(opt: KpyOptions): Promise<void> {
       }
 
       if (verbose) {
-        console.log(c.grey(`  ${filename}`))
+        console.log(grey(`  ${filename}`))
       }
 
       // console.log({filename, basename, srcFilename, destFilename})
@@ -150,9 +91,9 @@ export async function kpy(opt: KpyOptions): Promise<void> {
 
   if (!silent && filenames.length) {
     console.log(
-      `${move ? 'Moved' : 'Copied'} ${c.white(String(filenames.length))} files to ${c.dim(
+      `${move ? 'Moved' : 'Copied'} ${yellow(filenames.length)} files to ${dimGrey(
         outputDir,
-      )} ${c.dim(since(started))}`,
+      )} ${dimGrey(since(started))}`,
     )
   }
 }

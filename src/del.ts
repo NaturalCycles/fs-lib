@@ -1,9 +1,8 @@
 import { pFilter, pMap } from '@naturalcycles/js-lib'
+import { dimGrey, yellow } from '@naturalcycles/nodejs-lib/dist/colors'
 import { since } from '@naturalcycles/time-lib'
-import * as c from 'chalk'
 import * as fs from 'fs-extra'
 import * as globby from 'globby'
-import * as yargs from 'yargs'
 
 export interface DelOptions {
   /**
@@ -30,28 +29,6 @@ export type DelSingleOption = string
 const DEF_OPT: DelOptions = {
   patterns: [],
   concurrency: Number.POSITIVE_INFINITY,
-}
-
-export async function delCommand(): Promise<void> {
-  const { _: patterns, verbose, silent, debug, dry, concurrency } = yargs.demandCommand(1).options({
-    verbose: {
-      type: 'boolean',
-    },
-    silent: {
-      type: 'boolean',
-    },
-    debug: {
-      type: 'boolean',
-    },
-    dry: {
-      type: 'boolean',
-    },
-    concurrency: {
-      type: 'number',
-    },
-  }).argv
-
-  await del({ patterns, concurrency, verbose, silent, debug, dry })
 }
 
 /**
@@ -87,7 +64,7 @@ export async function del(_opt: DelOptions | DelSingleOption): Promise<void> {
   })
 
   if (verbose || debug || dry) {
-    console.log(`Will delete ${c.white(String(filenames.length))} files:`, filenames)
+    console.log(`Will delete ${yellow(filenames.length)} files:`, filenames)
   }
 
   if (dry) return
@@ -129,9 +106,9 @@ export async function del(_opt: DelOptions | DelSingleOption): Promise<void> {
 
   if (!silent) {
     console.log(
-      `del deleted ${c.white(String(filenames.length))} files and ${c.white(
-        String(deletedDirs.length),
-      )} dirs ${c.dim(since(started))}`,
+      `del deleted ${yellow(filenames.length)} files and ${yellow(
+        deletedDirs.length,
+      )} dirs ${dimGrey(since(started))}`,
     )
   }
 }
