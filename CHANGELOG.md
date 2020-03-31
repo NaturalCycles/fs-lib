@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/NaturalCycles/fs-lib/compare/v2.6.2...v2.7.0) (2020-03-31)
+
+
+### Features
+
+* modernize ([2bbdae8](https://github.com/NaturalCycles/fs-lib/commit/2bbdae8b98d0908155090b45844d0143ce6e6f9d))
+
 ## [2.6.2](https://github.com/NaturalCycles/fs-lib/compare/v2.6.1...v2.6.2) (2020-03-19)
 
 
