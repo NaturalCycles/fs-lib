@@ -1,5 +1,5 @@
+import { since } from '@naturalcycles/js-lib'
 import { boldWhite, dimGrey, grey, yellow } from '@naturalcycles/nodejs-lib/dist/colors'
-import { since } from '@naturalcycles/time-lib'
 import * as cpFile from 'cp-file'
 import * as fs from 'fs-extra'
 import * as globby from 'globby'
