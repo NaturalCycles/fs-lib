@@ -1,4 +1,4 @@
-import { pFilter, pMap, since } from '@naturalcycles/js-lib'
+import { pFilter, pMap, _since } from '@naturalcycles/js-lib'
 import { dimGrey, yellow } from '@naturalcycles/nodejs-lib/dist/colors'
 import * as fs from 'fs-extra'
 import * as globby from 'globby'
@@ -107,7 +107,7 @@ export async function del(_opt: DelOptions | DelSingleOption): Promise<void> {
     console.log(
       `del deleted ${yellow(filenames.length)} files and ${yellow(
         deletedDirs.length,
-      )} dirs ${dimGrey(since(started))}`,
+      )} dirs ${dimGrey(_since(started))}`,
     )
   }
 }

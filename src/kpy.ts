@@ -1,4 +1,4 @@
-import { since } from '@naturalcycles/js-lib'
+import { _since } from '@naturalcycles/js-lib'
 import { boldWhite, dimGrey, grey, yellow } from '@naturalcycles/nodejs-lib/dist/colors'
 import * as cpFile from 'cp-file'
 import * as fs from 'fs-extra'
@@ -93,7 +93,7 @@ export async function kpy(opt: KpyOptions): Promise<void> {
     console.log(
       `${move ? 'Moved' : 'Copied'} ${yellow(filenames.length)} files to ${dimGrey(
         outputDir,
-      )} ${dimGrey(since(started))}`,
+      )} ${dimGrey(_since(started))}`,
     )
   }
 }

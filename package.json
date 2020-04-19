@@ -9,8 +9,8 @@
     "del-debug": "tsn ./src/bin/del.ts dist --verbose --debug"
   },
   "dependencies": {
-    "@naturalcycles/js-lib": "^11.0.0",
-    "@naturalcycles/nodejs-lib": "^9.1.1",
+    "@naturalcycles/js-lib": "^12.0.1",
+    "@naturalcycles/nodejs-lib": "^10.1.0",
     "cp-file": "^9.0.0",
     "fs-extra": "^9.0.0",
     "globby": "^11.0.0",
@@ -40,7 +40,7 @@
     "kpy": "dist/bin/kpy.js"
   },
   "engines": {
-    "node": ">=10.13"
+    "node": ">=12.13.1"
   },
   "publishConfig": {
     "access": "public"
