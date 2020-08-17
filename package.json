@@ -9,7 +9,7 @@
     "del-debug": "tsn ./src/bin/del.ts dist --verbose --debug"
   },
   "dependencies": {
-    "@naturalcycles/js-lib": "^13.0.0",
+    "@naturalcycles/js-lib": "^14.0.0",
     "@naturalcycles/nodejs-lib": "^11.0.0",
     "cp-file": "^9.0.0",
     "fs-extra": "^9.0.0",
