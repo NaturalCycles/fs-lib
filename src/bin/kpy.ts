@@ -3,7 +3,7 @@
 import { runScript } from '@naturalcycles/nodejs-lib/dist/script'
 import 'loud-rejection/register'
 import * as yargs from 'yargs'
-import { kpy } from '../kpy'
+import { kpy, kpySync } from '../kpy'
 
 runScript(async () => {
   const {
@@ -35,6 +35,10 @@ runScript(async () => {
       type: 'boolean',
       descr: 'Move files instead of copy',
     },
+    async: {
+      type: 'boolean',
+      descr: 'Use kpy (async) instead of kpySync (experimental)',
+    },
   }).argv
 
   const outputDir = inputPatterns.pop()!
@@ -49,11 +53,17 @@ runScript(async () => {
     overwrite,
   })*/
 
-  await kpy({
+  const kpyOpt = {
     baseDir,
     inputPatterns,
     outputDir,
     ...opt,
     noOverwrite: !opt.overwrite,
-  })
+  }
+
+  if (opt.async) {
+    await kpy(kpyOpt)
+  } else {
+    kpySync(kpyOpt)
+  }
 })

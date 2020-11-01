@@ -1,4 +1,4 @@
 import { del, DelOptions } from './del'
-import { kpy, KpyOptions } from './kpy'
+import { kpy, KpyOptions, kpySync } from './kpy'
 
-export { KpyOptions, kpy, DelOptions, del }
+export { KpyOptions, kpy, kpySync, DelOptions, del }

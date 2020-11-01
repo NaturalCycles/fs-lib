@@ -4,7 +4,10 @@
   "description": "CLI and Node.js API to copy files with globs, promises, typescript and stuff.",
   "scripts": {
     "kpy": "tsn ./src/bin/kpy.ts",
-    "kpy-debug": "tsn ./src/bin/kpy.ts src dist",
+    "kpy-debug": "tsn ./src/bin/kpy.ts node_modules dist",
+    "kpy-async-debug": "tsn ./src/bin/kpy.ts --async node_modules dist",
+    "kpy-debug2": "tsn ./src/bin/kpy.ts node_modules dist",
+    "kpy-async-debug2": "tsn ./src/bin/kpy.ts --async node_modules dist",
     "del": "tsn ./src/bin/del.ts",
     "del-debug": "tsn ./src/bin/del.ts dist --verbose --debug"
   },
