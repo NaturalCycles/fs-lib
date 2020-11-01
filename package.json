@@ -1,6 +1,6 @@
 {
   "name": "@naturalcycles/fs-lib",
-  "version": "2.7.6",
+  "version": "2.8.0",
   "description": "CLI and Node.js API to copy files with globs, promises, typescript and stuff.",
   "scripts": {
     "kpy": "tsn ./src/bin/kpy.ts",

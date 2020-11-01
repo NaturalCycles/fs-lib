@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/NaturalCycles/fs-lib/compare/v2.7.6...v2.8.0) (2020-11-01)
+
+
+### Features
+
+* kpySync, use it by default for CLI (faster) ([abeed3e](https://github.com/NaturalCycles/fs-lib/commit/abeed3e060aa72ff7da0b5287ab0a57eab9ca584))
+
 ## [2.7.6](https://github.com/NaturalCycles/fs-lib/compare/v2.7.5...v2.7.6) (2020-09-21)
 
 
