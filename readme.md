@@ -1,3 +1,5 @@
+# DEPRECATED, use [@naturalcycles/nodejs-lib](https://github.com/NaturalCycles/nodejs-lib) instead
+
 ## @naturalcycles/fs-lib
 
 > CLI and Node.js API to copy files with globs, promises, typescript and stuff.
